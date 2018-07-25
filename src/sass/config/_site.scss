@@ -1,2 +1,24 @@
-$primary-font:     'Poppins', 'Arial', sans-serif;
-$text-colour:      $colour-dark-grey;
+$primary-font:                             'Poppins', 'Arial', sans-serif;
+
+/* Font Styles */
+$base-font:                                $primary-font;
+$header-font:                              $primary-font;
+
+$base-font-size:                           14px;
+$light-font-weight:                        200;
+$normal-font-weight:                       400;
+$header-font-weight:                       700;
+$display-font-weight:                      900;
+
+$base-text-colour:                         $colour-dark-grey;
+
+
+// Grid
+$grid-size:                                16;
+$grid-gutter:                              0 15px;
+$grid-col-vmargin:                         30px;
+$grid-row-vmargin:                         30px;
+
+// Breakpoints
+$mobile-breakpoint:                        320px;
+$tablet-breakpoint:                        800px;

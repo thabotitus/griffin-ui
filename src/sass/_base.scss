@@ -5,5 +5,16 @@ body {
 }
 
 body {
-  font-family: $primary-font;
+  font-family: $base-font;
+  font-size: $base-font-size;
+  color: $base-text-colour;
+}
+
+body > * {
+  box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  padding: 0 15px;   
+  text-transform: uppercase;
 }

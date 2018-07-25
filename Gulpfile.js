@@ -50,7 +50,7 @@ gulp.task('serve', ['build:css'], function() {
     });
 
     gulp.watch('./src/sass/{,*/}*.{scss,sass}', ['build:css']);
-    gulp.watch("./src/*.html").on('change', browserSync.reload);
+    gulp.watch("./src/**/*.html").on('change', browserSync.reload);
 });
 
 // Sass watcher

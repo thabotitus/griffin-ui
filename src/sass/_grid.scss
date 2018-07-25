@@ -1,0 +1,77 @@
+.gf-container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  &--fluid {
+    max-width: 96%;
+  }
+}
+
+.gf-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: $grid-row-vmargin;
+  align-items: flex-start;
+}
+
+.gf-col {
+  border-radius: 2px;
+  padding: $grid-gutter;
+  box-sizing: border-box;
+  transition: width cubic-bezier(0.47, 0, 0.745, 0.715) 400ms;
+
+  &-auto {
+    flex: auto;
+  }
+
+  &--vspace {
+    margin-bottom: $grid-col-vmargin;
+  }
+}
+
+// Class Generation
+@for $i from 1 through $grid-size {
+  .gf-col-#{$i} {
+    width: calc(100%/#{$grid-size} * #{$i});
+  }
+}
+
+@for $i from 1 through $grid-size / 2 {
+  .gf-col-flex-#{$i} {
+    flex: #{$i};
+  }
+}
+
+@media (max-width: $tablet-breakpoint) {
+  .gf-container--fluid {
+    width: 100%;
+  }
+
+  .gf-row {
+    flex-direction: column;
+  }
+
+  .gf-col {
+    width: 100%;
+    margin-bottom: $grid-col-vmargin;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// FOR DISPLAY ONLY
+.gf-col--display {
+  div{
+    border: 4px solid $colour-dark-grey;
+    text-align: center;
+    padding: 12px;
+    border-radius: 2px;
+    font-weight: $header-font-weight;
+  }
+}
