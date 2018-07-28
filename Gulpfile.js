@@ -11,7 +11,7 @@ var gulp = require('gulp'),
 
 // var listing of files for dist build
 var filesToDist = [
-    './src/*.html',
+    './src/**/*.html',
     './src/css/**/*.*',
     './src/images/**/*.*',
     './src/js//**/*.js'
@@ -41,6 +41,22 @@ gulp.task('build:css', function() {
         .pipe(reload({stream: true}));
 });
 
+gulp.task('build:css:dist', function() {
+gulp.src('./src/sass/{,*/}*.{scss,sass}')
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+    errLogToConsole: true,
+    outputStyle: 'compressed' //alt options: nested, compact, compressed
+}))
+    .pipe(gulpautoprefixer({
+    browsers: ['last 4 versions'],
+    cascade: false
+}))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./dist/css'))
+    .pipe(reload({stream: true}));
+});
+
 // Static Server + watching scss/html files
 gulp.task('serve', ['build:css'], function() {
 
@@ -50,6 +66,7 @@ gulp.task('serve', ['build:css'], function() {
     });
 
     gulp.watch('./src/sass/{,*/}*.{scss,sass}', ['build:css']);
+    gulp.watch('./src/sass/**/*.{scss,sass}', ['build:css']);
     gulp.watch("./src/**/*.html").on('change', browserSync.reload);
 });
 
@@ -66,7 +83,7 @@ gulp.task('clean', function(){
 
 // dist build tasks
 // see var filesToDist for specific files
-gulp.task('build:dist',['clean'], function(){
+gulp.task('build:dist',['clean', 'build:css:dist'], function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
   gulp.src(filesToDist, { base: './src/' })

@@ -9,3 +9,15 @@ $colour-white:                #fdfdfd;
 
 $primary-colour:               $colour-navy;
 $secondary-colour:             $colour-orange;
+
+
+$siteColours: (
+  orange: $colour-orange,
+  red: $colour-red,
+  navy: $colour-navy,
+  turquoise: $colour-turquoise,
+  teal: $colour-teal,
+  dark-grey: $colour-dark-grey,
+  light-grey: $colour-light-grey,
+  white: $colour-white
+);
