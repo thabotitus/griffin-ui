@@ -15,6 +15,10 @@
   flex-wrap: wrap;
   margin-bottom: $grid-row-vmargin;
   align-items: flex-start;
+
+  &--no-margin{
+    margin-bottom: 0;
+  }
 }
 
 .gf-col {
@@ -23,7 +27,7 @@
   transition: width cubic-bezier(0.47, 0, 0.745, 0.715) 400ms;
 
   &-auto {
-    flex: auto;
+    flex: 1;
   }
 
   &--vspace {

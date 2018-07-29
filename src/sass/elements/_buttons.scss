@@ -69,6 +69,10 @@
   border-radius: 2px;
 }
 
+.gf-button--fluid {
+  width: 100%;
+}
+
 // GRADIENTS
 
 @each $name, $colour in $siteColours {

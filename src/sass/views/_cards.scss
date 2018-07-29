@@ -1,0 +1,90 @@
+.gf-card {
+  text-align: left;
+  align-self: flex-start;
+  background: $colour-white;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  overflow: hidden;
+  box-sizing: border-box;
+  color: $base-text-colour;
+}
+
+.gf-card__head {
+  min-height: 60px;
+  max-height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  position: relative;
+  text-transform: uppercase;
+  font-family: $header-font;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+}
+
+.gf-card__content {
+  min-height: 40px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  font-weight: 200;
+  background: inherit;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+
+  &:last-child{
+    border-bottom: none;
+  }
+}
+
+.gf-card__footer {
+  min-height: 40px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  font-weight: 200;
+  background: darken($colour-light-grey, 1%);
+}
+
+
+
+// Full / section colour cards
+
+@each $name, $colour in $siteColours {
+  .gf-card--#{$name} {
+    background: $colour;
+    background: linear-gradient(to bottom, $colour 0%,darken($colour, 5%) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$colour, endColorstr=darken($colour, 5%),GradientType=0 );
+
+    @if $name == white {
+      color: $colour-dark-grey;
+    } @else if $name == 'light-grey' {
+      color: $colour-dark-grey;
+    } @else {
+      color: $colour-white;
+    }
+
+    .gf-card__head,
+    .gf-card__content{
+      background: transparent;
+    }
+
+    .gf-card__footer {
+      background: darken($colour, 5%);
+    }
+  }
+}
+
+@media (max-width: $tablet-breakpoint) {
+  .gf-card{
+    width: 100%;
+    margin-bottom: 30px;
+    margin: 0;
+  }
+}
